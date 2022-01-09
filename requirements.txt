@@ -1,0 +1,6 @@
+python-binance==1.0.15
+python-dotenv==0.19.1
+pandas==1.2.5
+python-log-indenter==0.9
+colorama==0.4.4
+termcolor==1.1.0
