@@ -1,10 +1,12 @@
-from binance import AsyncClient
 import asyncio, os
+from Utils import BLUE
+from binance import AsyncClient
 from dotenv import load_dotenv
 load_dotenv()
 _MY_API = os.getenv('MY_API')
 _MY_SECRECT = os.getenv('MY_SECRECT')
 assert(_MY_SECRECT and _MY_API), "Binance keys are missing!"
+
 
 def get_or_create_eventloop():
     try:
@@ -25,7 +27,7 @@ class _BaseAsyncClient:
 
     def __init__(self):
         self._client = RUC(self._createClient())
-        print(f'Async Client Acquired')
+        print(BLUE(f'Async Client Acquired'))
 
     def __del__(self):
         RUC(self._client.close_connection())
