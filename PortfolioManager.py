@@ -68,8 +68,11 @@ def get_asset_avg_buy_price(asset: str) -> float:
     assetAvg = AssetAvgPrice(asset)
     orders = []
     # Get all usdt and eur orders and sorted with time
-    for order in _local_bm.get_all_orders(symbolName=asset + 'USDT'):
-        orders.append(order)
+    try:
+        for order in _local_bm.get_all_orders(symbolName=asset + 'USDT'):
+            orders.append(order)
+    except Exception:
+        pass
     try:
         for order in _local_bm.get_all_orders(symbolName=asset + 'EUR'):
             orders.append(order)

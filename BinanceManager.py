@@ -95,8 +95,13 @@ class MyBinanceManager:
 
     @BIN_RETRY
     def getSymbolTickerPrice(self, symbolName: str) -> float:
-        return float(
+        try:
+            price = float(
             RUC(self.client.get_symbol_ticker(symbol=symbolName)).get('price'))
+        except Exception as e:
+            if 'Invalid symbol.' in e.message:
+                return 0.0
+        return price
 
     def get_asset_balance(self, asset: str):
         return RUC(self.client.get_asset_balance(asset=asset))
