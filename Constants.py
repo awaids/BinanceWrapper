@@ -36,6 +36,7 @@ IGNORE_ASSETS = [
     "STRAT",
     "MCO",
     "HC",
+    "ANY",
 ]
 
 MIN_1 = Client.KLINE_INTERVAL_1MINUTE
