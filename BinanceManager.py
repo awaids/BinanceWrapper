@@ -19,7 +19,7 @@ def BIN_RETRY(func):
             except Exception as e:
                 print(f"Exception Thrown: {e}")
                 print(f"Retrying({retries - i}) .....")
-                time.sleep(5)
+                time.sleep(5 * i)
                 pass
         raise e
 
