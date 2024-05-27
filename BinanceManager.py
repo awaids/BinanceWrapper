@@ -13,16 +13,17 @@ def BIN_RETRY(func):
     # New decorator for all the binance methods
     def result(*args, **kwargs):
         retries = 5
+        exception_thrown = None
         for i in range(retries):
             try:
                 return func(*args, **kwargs)
             except Exception as e:
+                exception_thrown = e
                 print(f"Exception Thrown: {e}")
                 print(f"Retrying({retries - i}) .....")
                 time.sleep(5 * i)
                 pass
-        raise e
-
+        raise exception_thrown
     return result
 
 
