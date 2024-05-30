@@ -10,21 +10,23 @@ SELL = BaseClient.SIDE_SELL
 class LimitOrder(OrderBase):
     def __init__(self, orderDict: dict):
         super().__init__(orderDict)
-        assert(self.type == LIMIT), "LimitOrder not provided with order a limit order!"
+        assert self.type == LIMIT, "LimitOrder not provided with order a limit order!"
+
 
 class LimitBuyOrder(LimitOrder):
     def __init__(self, orderDict: dict):
         super().__init__(orderDict)
-        assert(self.side == BUY), "LimitBuyOrder not provided with order a buy order!"
+        assert self.side == BUY, "LimitBuyOrder not provided with order a buy order!"
 
     @property
     def buyPrice(self) -> float:
         return self.price
 
+
 class LimitSellOrder(LimitOrder):
     def __init__(self, orderDict: dict):
         super().__init__(orderDict)
-        assert(self.side == SELL), "LimitSellOrder not provided with order a sell order!"
+        assert self.side == SELL, "LimitSellOrder not provided with order a sell order!"
 
     @property
     def sellPrice(self) -> float:
