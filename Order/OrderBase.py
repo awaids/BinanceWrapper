@@ -75,6 +75,11 @@ class OrderBase(ABC):
         """Returns the amount invested in the order"""
         return self.price * self.executedQty
 
+    @property
+    def currentWorth(self) -> float:
+        """Returns the current worth of the asset"""
+        return self.get_ticker_price() * self.executedQty
+
     # Binance based properties
     @property
     def symbolInfo(self) -> Symbol:
